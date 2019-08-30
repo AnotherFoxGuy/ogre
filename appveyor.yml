@@ -1,8 +1,6 @@
 platform: x64
 configuration: Release
-image:
- - Visual Studio 2019 Preview
- - Visual Studio 2013
+image: Visual Studio 2019
 install:
  - cmd: choco install swig -y --version 3.0.12 & exit 0
 build_script:

@@ -32,6 +32,11 @@ if(WIN32)
   set(CMAKE_SUPPRESS_REGENERATION true)
 endif()
 
+# Check if conan is in use
+if (EXISTS "${CMAKE_BINARY_DIR}/conanbuildinfo_multi.cmake")
+    set(OGRE_USE_CONAN TRUE)
+endif()
+
 # prefer GLVND
 if(POLICY CMP0072)
   cmake_policy(SET CMP0072 NEW)
@@ -289,7 +294,11 @@ if(OGRE_BUILD_COMPONENT_MESHLODGENERATOR)
 endif()
 
 # Find dependencies
-include(Dependencies)
+if(OGRE_USE_CONAN)
+  include(Dependencies_Conan)
+else()
+  include(Dependencies)
+endif()
 
 ######################################################################
 # Provide user options to customise the build process

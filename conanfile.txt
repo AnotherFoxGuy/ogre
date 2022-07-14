@@ -1,0 +1,15 @@
+[requires]
+freeimage/3.18.0
+freetype/2.12.1
+pugixml/1.12.1
+zlib/1.2.12
+zziplib/0.13.71
+
+[generators]
+cmake_multi
+
+[imports]
+bin, *.dll -> E:/projects/rigs-of-rods/_build/bin/ @ keep_path=False
+lib, *.dll -> E:/projects/rigs-of-rods/_build/bin/ @ keep_path=False
+lib, *.dylib -> E:/projects/rigs-of-rods/_build/bin/ @ keep_path=False
+lib, *.so* -> E:/projects/rigs-of-rods/_build/bin/ @ keep_path=False

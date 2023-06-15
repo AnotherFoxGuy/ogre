@@ -28,10 +28,9 @@ if(CMAKE_COMPILER_IS_GNUCXX)
   target_link_libraries(Codec_STBI PRIVATE gcc)
 endif()
 
-if(ZLIB_FOUND)
   target_compile_definitions(Codec_STBI PRIVATE HAVE_ZLIB)
-  target_link_libraries(Codec_STBI PRIVATE ZLIB::ZLIB)
-endif()
+  target_link_libraries(Codec_STBI PUBLIC ZLIB::ZLIB)
+
 
 ogre_config_framework(Codec_STBI)
 ogre_config_plugin(Codec_STBI)

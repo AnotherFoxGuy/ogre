@@ -5,7 +5,7 @@ add_library(Plugin_DotScene ${OGRE_LIB_TYPE} ${HEADER_FILES} src/DotSceneLoader.
 target_include_directories(Plugin_DotScene PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
     $<INSTALL_INTERFACE:include/OGRE/Plugins/DotScene>)
-target_link_libraries(Plugin_DotScene PUBLIC OgreMain PRIVATE pugixml)
+target_link_libraries(Plugin_DotScene PUBLIC OgreMain PRIVATE pugixml::pugixml)
 if(OGRE_BUILD_COMPONENT_TERRAIN)
     target_link_libraries(Plugin_DotScene PUBLIC OgreTerrain)
 endif()

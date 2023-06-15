@@ -80,7 +80,7 @@ macro(copy_release INPUT)
   endif ()
 endmacro ()
 
-if (OGRE_INSTALL_DEPENDENCIES)
+if (0)
   if (OGRE_STATIC)
     # for static builds, projects must link against all Ogre dependencies themselves, so copy full include and lib dir
     if (EXISTS ${OGRE_DEP_DIR}/include/)
@@ -143,7 +143,7 @@ if (OGRE_INSTALL_DEPENDENCIES)
   endif () # WIN32
 endif ()
 
-if (OGRE_COPY_DEPENDENCIES)
+if (0)
   # copy the required DLLs to the build directory
   file(GLOB DLLS ${OGRE_DEP_DIR}/bin/*.dll)
   file(COPY ${DLLS} DESTINATION ${PROJECT_BINARY_DIR}/bin/debug)

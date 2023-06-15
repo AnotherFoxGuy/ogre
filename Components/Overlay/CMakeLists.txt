@@ -52,7 +52,7 @@ target_include_directories(OgreOverlay PUBLIC
 
 if(FREETYPE_FOUND)
   target_compile_definitions(OgreOverlay PRIVATE HAVE_FREETYPE)
-  target_link_libraries(OgreOverlay PRIVATE ${FREETYPE_LIBRARIES})
+  target_link_libraries(OgreOverlay PRIVATE Freetype::Freetype)
   target_include_directories(OgreOverlay PRIVATE ${FREETYPE_INCLUDE_DIRS})
   if(ZLIB_FOUND)
     target_link_libraries(OgreOverlay PRIVATE ZLIB::ZLIB)

@@ -59,8 +59,8 @@ def main():
                        "-DOGRE_BIN_DIRECTORY=Ogre", # direct dlls into python package
                        "-DOGRE_CFG_INSTALL_PATH=bin", # but keep config files in bin, relative to Media
                        "-DOGRE_BUILD_RENDERSYSTEM_D3D9=OFF", # do not require old runtime
-                       "-DOGRE_BUILD_RENDERSYSTEM_VULKAN=ON",
-                       "-DOGRE_BUILD_PLUGIN_GLSLANG=ON"
+                       "-DOGRE_BUILD_RENDERSYSTEM_VULKAN=OFF",
+                       "-DOGRE_BUILD_PLUGIN_GLSLANG=OFF"
                        ]
     elif sys.platform == "linux":
         cmake_args += ["-DOGRE_GLSUPPORT_USE_EGL=ON",

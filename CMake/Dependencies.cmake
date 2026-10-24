@@ -142,6 +142,22 @@ if(OGRE_BUILD_DEPENDENCIES AND NOT EXISTS ${OGREDEPS_PATH})
             WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/SDL2-build)
         execute_process(COMMAND ${CMAKE_COMMAND}
             --build ${PROJECT_BINARY_DIR}/SDL2-build ${BUILD_COMMAND_OPTS})
+
+        message(STATUS "Building SDL2_image")
+        file(DOWNLOAD
+                https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.12/SDL2_image-2.8.12.tar.gz
+            ${PROJECT_BINARY_DIR}/SDL2_image-2.8.12.tar.gz)
+        execute_process(COMMAND ${CMAKE_COMMAND}
+            -E tar xf SDL2_image-2.8.12.tar.gz WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
+        execute_process(COMMAND ${CMAKE_COMMAND}
+            -E make_directory ${PROJECT_BINARY_DIR}/SDL2_image-build)
+        execute_process(COMMAND ${BUILD_COMMAND_COMMON}
+            -DSDL_STATIC=FALSE
+            -DCMAKE_INSTALL_LIBDIR=lib
+            ${PROJECT_BINARY_DIR}/SDL2_image-2.8.12
+            WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/SDL2_image-build)
+        execute_process(COMMAND ${CMAKE_COMMAND}
+            --build ${PROJECT_BINARY_DIR}/SDL2_image-build ${BUILD_COMMAND_OPTS})
     endif()
 
     if(MSVC OR MINGW OR SKBUILD) # other platforms dont need this
@@ -342,6 +358,9 @@ if(NOT ANDROID AND NOT EMSCRIPTEN)
         INTERFACE_LINK_LIBRARIES "${SDL2_LIBRARIES}"
     )
   endif()
+
+  find_package(SDL2_image QUIET)
+  macro_log_feature(SDL2_image_FOUND "SDL2_image" "Simple DirectMedia Library needed for input handling in samples" "https://www.libsdl.org/")
 
   find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Gui QUIET CONFIG)
   find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui QUIET CONFIG)

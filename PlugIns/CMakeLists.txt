@@ -29,6 +29,10 @@ if(OGRE_BUILD_PLUGIN_STBI)
   add_subdirectory(STBICodec)
 endif()
 
+if(1)
+  add_subdirectory(SDLImageCodec)
+endif()
+
 if(OGRE_BUILD_PLUGIN_FREEIMAGE)
   add_subdirectory(FreeImageCodec)
 endif()
